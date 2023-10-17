@@ -1,0 +1,80 @@
+<style>
+  /* Estilos para el formulario de compartir */
+  #select-users {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  #select-users:hover {
+    background-color: #e0e0e0;
+  }
+
+  .btn-success {
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  .btn-success:hover {
+    background-color: #45a049;
+  }
+
+  /* Estilos para las tarjetas de usuarios */
+  .card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .card:hover {
+    background-color: #f9f9f9;
+    transform: scale(1.02);
+  }
+
+  /* Estilos para los botones en las tarjetas de usuarios */
+  .card .btn {
+    margin: 5px;
+  }
+</style>
+
+<div class="container p-4">
+    <div class="row">
+        <form action="/salas/compartir/{{idSala}}" method="POST">
+            <select name="idUsuario" id="select-users" class="form-control" onchange="habilitar">
+                <option value="nulo">Seleccione un usuario</option>
+                {{#each users}}
+                <option value="{{id}}">{{username}}, {{correo}}</option>
+                {{/each}}
+            </select>
+            <button class="btn btn-success btn-block mt-2">Compartir</button>
+        </form>
+        {{#each users}}
+        <div class="col-md-4 my-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <a href="" target="_blank">
+                        <h3 class="card-title text-uppercase">
+                            {{username}}
+                        </h3>
+                    </a>
+                    <p class="m-3">{{correo}}</p>
+                    <input type="text" class="form-control" name="id" value="{{id}}">
+                    
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="col-md-4 mx-auto">
+            <div class="card card-body text-center">
+                <p>No existe ninguna reunion para este usuario.</p>
+                <a class="btn btn-primary" href="/salas/add">Crea Uno!</a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

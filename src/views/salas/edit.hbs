@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      .card {
+        margin: 0.2cm;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-scroller">
+      <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="row justify-content-center align-items-center full-height">
+          <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+            <div class="card col-lg-12 col-md-12 col-12 mx-auto">
+              <div class="card-body px-5 py-5">
+                <body>
+                    <h3 class="card-title text-center mb-4">Editar Retaunion</h3>
+                </body>        
+                <form action="/salas/edit/{{sala.id}}" method="POST">
+                    <div class="form-group">
+                        <label for="Titulo" class="label-text">Titulo *</label>
+                        <input type="text" name="title" class="form-control" placeholder="Title" value="{{sala.title}}"
+                            autofocus>
+                    </div>
+                    <div class="form-group">                            
+                        <label for="XML" class="label-text">XML *</label>
+                    <input type="xml" name="xml" class="form-control" placeholder="URL" value="{{sala.xml}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="Titulo" class="label-text">Descripcion *</label>
+                        <textarea name="description" rows="2" class="form-control"
+                            placeholder="Description">{{sala.description}}</textarea>
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary btn-lg black-button">Actualizar Reunion</button>
+                    </div>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
